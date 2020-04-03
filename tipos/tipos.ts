@@ -123,7 +123,7 @@ function falha(msg: string): never {
 
 const produto = {
     nome: 'Sabão',
-    preco: 4,
+    preco: 5,
 
     validarProduto() {
 
@@ -131,9 +131,7 @@ const produto = {
             falha('Precisa ter um nome');
         }
 
-        if (this.preco <= 0) {
-            falha('Preco inválido!');
-        }
+        if (this.preco <= 0) falha('Preco inválido!');
     }
 }
 
