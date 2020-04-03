@@ -63,3 +63,78 @@ console.log(calculo(5, 15));
 // objetos 
 const usuario = { nome: 'Anderson', idade: 27 };
 console.log(usuario);
+
+/**
+ ** Desafio 
+    Criar um objeto funcionário com:
+        - Array de strings com os nomes dos supervisores
+        - Função de bater ponto que recebe a hora (número) 
+            e retorna uma string
+            -> Ponto normal (<= 8)
+            -> Fora do horário (> 8)
+*/
+
+// Alias
+type Funcionario = {
+    supervisores: string[],
+    baterPonto: (horas: number) => string
+}
+
+function baterPonto(horario: number): string {
+    let retorno: string = '';
+
+    if (horario <= 8) {
+        retorno = 'Ponto normal'
+    } else {
+        retorno = 'Fora do horário!'
+    }
+
+    return retorno;
+}
+
+const primeiroFuncionario: Funcionario = {
+    supervisores: ['Ana', 'Fernando'],
+    baterPonto
+}
+
+const segundoFuncionario: Funcionario = {
+    supervisores: ['Bia', 'Carlos'],
+    baterPonto
+}
+
+console.log(primeiroFuncionario.supervisores);
+console.log(primeiroFuncionario.baterPonto(8));
+console.log(primeiroFuncionario.baterPonto(9));
+
+// Union Types
+let nota: number | string = 10
+console.log(`Minha nota é ${nota}!`);
+nota = '10'
+console.log(`Minha nota é ${nota}!`);
+
+// Checando tipos
+let valor = 30
+console.log(typeof valor);
+
+// never
+function falha(msg: string): never {
+    throw new Error(msg)
+}
+
+const produto = {
+    nome: 'Sabão',
+    preco: 4,
+
+    validarProduto() {
+
+        if (!this.nome || this.nome.trim().length == 0) {
+            falha('Precisa ter um nome');
+        }
+
+        if (this.preco <= 0) {
+            falha('Preco inválido!');
+        }
+    }
+}
+
+produto.validarProduto();

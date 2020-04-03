@@ -58,3 +58,49 @@ console.log(calculo(5, 15));
 // objetos 
 var usuario = { nome: 'Anderson', idade: 27 };
 console.log(usuario);
+function baterPonto(horario) {
+    var retorno = '';
+    if (horario <= 8) {
+        retorno = 'Ponto normal';
+    }
+    else {
+        retorno = 'Fora do horário!';
+    }
+    return retorno;
+}
+var primeiroFuncionario = {
+    supervisores: ['Ana', 'Fernando'],
+    baterPonto: baterPonto
+};
+var segundoFuncionario = {
+    supervisores: ['Bia', 'Carlos'],
+    baterPonto: baterPonto
+};
+console.log(primeiroFuncionario.supervisores);
+console.log(primeiroFuncionario.baterPonto(8));
+console.log(primeiroFuncionario.baterPonto(9));
+// Union Types
+var nota = 10;
+console.log("Minha nota \u00E9 " + nota + "!");
+nota = '10';
+console.log("Minha nota \u00E9 " + nota + "!");
+// Checando tipos
+var valor = 30;
+console.log(typeof valor);
+// never
+function falha(msg) {
+    throw new Error(msg);
+}
+var produto = {
+    nome: 'Sabão',
+    preco: 4,
+    validarProduto: function () {
+        if (!this.nome || this.nome.trim().length == 0) {
+            falha('Precisa ter um nome');
+        }
+        if (this.preco <= 0) {
+            falha('Preco inválido!');
+        }
+    }
+};
+produto.validarProduto();
