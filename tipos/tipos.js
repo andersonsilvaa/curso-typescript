@@ -93,14 +93,27 @@ function falha(msg) {
 }
 var produto = {
     nome: 'Sabão',
-    preco: 4,
+    preco: 5,
     validarProduto: function () {
         if (!this.nome || this.nome.trim().length == 0) {
             falha('Precisa ter um nome');
         }
-        if (this.preco <= 0) {
+        if (this.preco <= 0)
             falha('Preco inválido!');
-        }
     }
 };
 produto.validarProduto();
+var contaBancaria = {
+    saldo: 3456,
+    depositar: function (valor) {
+        this.saldo += valor;
+    }
+};
+var correntista = {
+    nome: 'Ana Silva',
+    contaBancaria: contaBancaria,
+    contatos: ['34567890', '98765432']
+};
+correntista.contaBancaria.depositar(3000);
+console.log(correntista);
+//# sourceMappingURL=tipos.js.map
